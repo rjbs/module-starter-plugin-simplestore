@@ -1,0 +1,12 @@
+Changes
+MANIFEST
+META.yml # Will be created by "make dist"
+Makefile.PL
+README
+bin/ms-pack
+lib/Module/Starter/Plugin/DirStore.pm
+lib/Module/Starter/Plugin/InlineStore.pm
+lib/Module/Starter/Plugin/ModuleStore.pm
+t/00.load.t
+t/pod-coverage.t
+t/pod.t
