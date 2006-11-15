@@ -1,9 +1,9 @@
-package Module::Starter::Plugin::DirStore;
-
-our $VERSION = '0.14';
-
 use warnings;
 use strict;
+
+package Module::Starter::Plugin::DirStore;
+
+our $VERSION = '0.141';
 
 use File::Basename;
 
@@ -13,7 +13,7 @@ Module::Starter::Plugin::DirStore -- module template files in a directory
 
 =head1 VERSION
 
-version 0.14
+version 0.141
 
  $Id$
 
@@ -53,17 +53,19 @@ sub templates {
     my %template;
 
     my $template_dir = ($ENV{MODULE_TEMPLATE_DIR} || $self->{template_dir})
-        or die "template dir not defined";
-    die "template dir does not exist: $template_dir"
+        or Carp::croak "template dir not defined";
+    Carp::croak "template dir does not exist: $template_dir"
         unless -d $template_dir;
 
-    foreach (<$template_dir/*>) {
-				my $basename = basename $_;
+    foreach (glob "$template_dir/*") {
+        my $basename = basename $_;
         next if (not -f $_) or ($basename =~ /^\./);
-        open my $template_file, '<', $_ or die "couldn't open template: $_";
-        local $/;
-        $template{$basename} = <$template_file>;
-        close $template_file;
+        open my $template_file, '<', $_
+          or Carp::croak "couldn't open template: $_";
+        $template{$basename} = do {
+          local $/ = undef;
+          <$template_file>;
+        };
     }
 
     return %template;

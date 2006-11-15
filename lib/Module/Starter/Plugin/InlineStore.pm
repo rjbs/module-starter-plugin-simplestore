@@ -1,9 +1,11 @@
-package Module::Starter::Plugin::InlineStore;
-
-our $VERSION = '0.14';
-
 use warnings;
 use strict;
+
+package Module::Starter::Plugin::InlineStore;
+
+our $VERSION = '0.141';
+
+use Carp ();
 
 =head1 NAME
 
@@ -11,7 +13,7 @@ Module::Starter::Plugin::InlineStore -- inline module template files
 
 =head1 VERSION
 
-version 0.14
+version 0.141
 
  $Id$
 
@@ -62,10 +64,10 @@ sub _template_filehandle {
     my $self = shift;
 
     my $template_filename =
-			($ENV{MODULE_TEMPLATE_FILE} || $self->{template_file})
-			or die "no template file defined";
+      ($ENV{MODULE_TEMPLATE_FILE} || $self->{template_file})
+      or Carp::croak "no template file defined";
     open my $template_file, '<', $template_filename
-      or die "couldn't open template file: $template_filename";
+      or Carp::croak "couldn't open template file: $template_filename";
 
     return $template_file;
 }
@@ -78,9 +80,8 @@ sub templates {
 
     my $fn = '_';
     while (<$template_file>) {
-        if (/^___([-_.0-9A-Za-z]+)___$/) {
-            $fn = $1;
-            $template{$fn} = '';
+        if (($fn) = /^___([-_.0-9A-Za-z]+)___$/) {
+            $template{$fn} = q{};
             next;
         }
         $template{$fn} .= $_;

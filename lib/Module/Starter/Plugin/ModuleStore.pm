@@ -1,9 +1,11 @@
-package Module::Starter::Plugin::ModuleStore;
-
-our $VERSION = '0.14';
-
 use warnings;
 use strict;
+
+package Module::Starter::Plugin::ModuleStore;
+
+our $VERSION = '0.141';
+
+use Carp ();
 
 =head1 NAME
 
@@ -11,7 +13,7 @@ Module::Starter::Plugin::ModuleStore -- store inline templates in modules
 
 =head1 VERSION
 
-version 0.14
+version 0.141
 
  $Id$
 
@@ -50,10 +52,11 @@ sub _template_filehandle {
     my $self = shift;
 
     my $template_module =
-			($ENV{MODULE_TEMPLATE_MODULE} || $self->{template_module});
-		eval "require $template_module"
-			or die "couldn't load template store module $template_module\: $@";
-		no strict 'refs';
+      ($ENV{MODULE_TEMPLATE_MODULE} || $self->{template_module});
+    eval "require $template_module"
+      or Carp::croak "couldn't load template store module $template_module: $@";
+
+    no strict 'refs'; ## no critic NoStrict
     return \*{"$template_module\::DATA"};
 }
 
@@ -63,11 +66,11 @@ sub templates {
      
     my $template_file = $self->_template_filehandle;
 
-    my $fn = '_';
+    my $fn = q{_};
     while (<$template_file>) {
         if (/^___([-_.0-9A-Za-z]+)___$/) {
             $fn = $1;
-            $template{$fn} = '';
+            $template{$fn} = q{}
             next;
         }
         $template{$fn} .= $_;
