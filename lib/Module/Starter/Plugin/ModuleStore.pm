@@ -13,7 +13,7 @@ Module::Starter::Plugin::ModuleStore -- store inline templates in modules
 
 version 0.14
 
- $Id: ModuleStore.pm,v 1.3 2004/10/02 02:08:30 rjbs Exp $
+ $Id$
 
 =head1 SYNOPSIS
 

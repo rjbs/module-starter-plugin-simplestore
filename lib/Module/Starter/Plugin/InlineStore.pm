@@ -13,7 +13,7 @@ Module::Starter::Plugin::InlineStore -- inline module template files
 
 version 0.14
 
- $Id: InlineStore.pm,v 1.7 2004/10/02 02:08:30 rjbs Exp $
+ $Id$
 
 =head1 SYNOPSIS
 

@@ -15,7 +15,7 @@ Module::Starter::Plugin::DirStore -- module template files in a directory
 
 version 0.14
 
- $Id: DirStore.pm,v 1.8 2004/10/02 02:08:30 rjbs Exp $
+ $Id$
 
 =head1 SYNOPSIS
 
