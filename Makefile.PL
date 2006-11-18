@@ -7,6 +7,7 @@ WriteMakefile(
     ABSTRACT            => 'template storage methods for Module::Starter',
 		DISTNAME            => 'Module-Starter-Plugin-SimpleStore',
     AUTHOR              => 'Ricardo SIGNES <rjbs@cpan.org>',
+    LICENSE             => 'perl',
     VERSION_FROM        => 'lib/Module/Starter/Plugin/DirStore.pm',
     PL_FILES            => {},
     PREREQ_PM => {
