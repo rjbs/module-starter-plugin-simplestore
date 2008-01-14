@@ -3,7 +3,7 @@ use strict;
 
 package Module::Starter::Plugin::ModuleStore;
 
-our $VERSION = '0.142';
+our $VERSION = '0.143';
 
 use Carp ();
 
@@ -13,9 +13,7 @@ Module::Starter::Plugin::ModuleStore -- store inline templates in modules
 
 =head1 VERSION
 
-version 0.142
-
- $Id$
+version 0.143
 
 =head1 SYNOPSIS
 

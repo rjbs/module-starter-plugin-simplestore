@@ -3,8 +3,9 @@ use strict;
 
 package Module::Starter::Plugin::DirStore;
 
-our $VERSION = '0.142';
+our $VERSION = '0.143';
 
+use Carp ();
 use File::Basename;
 
 =head1 NAME
@@ -13,9 +14,7 @@ Module::Starter::Plugin::DirStore -- module template files in a directory
 
 =head1 VERSION
 
-version 0.142
-
- $Id$
+version 0.143
 
 =head1 SYNOPSIS
 
