@@ -79,6 +79,7 @@ sub templates {
     my $fn = '_';
     while (<$template_file>) {
         if (/^___([-_.0-9A-Za-z]+)___$/) {
+            $fn = $1;
             $template{$fn} = q{};
             next;
         }
