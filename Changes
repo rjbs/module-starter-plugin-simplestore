@@ -1,5 +1,8 @@
 Revision history for Module-Starter-Plugin-SimpleStore
 
+0.144   2011-12-23
+        fixed a very dumb bug in InlineStore; thanks, Oleg Kostyuk!
+
 0.143   2007-01-14
         added Carp.pm to DirStore to fix tests
 
